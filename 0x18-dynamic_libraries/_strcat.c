@@ -5,7 +5,7 @@
  *    *@src: pointer to source string.
  *     *
  *      *Return: pointer to destination string.
- *       */
+*/
 char *_strcat(char *dest, char *src)
 {
 	int length, j; /* j will hold the length of the source */

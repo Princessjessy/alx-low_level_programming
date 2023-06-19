@@ -5,7 +5,7 @@
  *   * @dest: poiter parameter
  *    * @src: poiter parameter
  *      * Return: char
- *       */
+*/
 
 char *_strcpy(char *dest, char *src)
 {

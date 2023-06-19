@@ -4,7 +4,7 @@
  *  * _isdigit - checks for digits
  *   * @c: parameter to check
  *    * Return: 0 or 1
- *     */
+*/
 
 int _isdigit(int c)
 {
