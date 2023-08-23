@@ -1,0 +1,42 @@
+# executable school
+
+# Compiler 
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Source files 
+SRC = main.c file1.c file2.c
+
+# Object files 
+OBJ = $(patsubst %.c, %.o, $(SRC))
+
+# executable
+NAME = school
+
+# builds your executable
+all: $(NAME)
+
+#  build the executable
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $@
+
+#  compile individual 
+%.o: %.c m.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+#  files and the executable
+clean:
+	$(RM) $(NAME) *~ \#*
+
+# the object files
+oclean:
+	$(RM) $(OBJ)
+
+# the source files
+fclean: clean oclean
+
+# source files
+re: fclean all
+
+# conflicts with files of the same names
+.PHONY: all clean oclean fclean re
