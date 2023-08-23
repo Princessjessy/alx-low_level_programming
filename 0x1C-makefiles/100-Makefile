@@ -1,42 +1,32 @@
-# executable school
+#!/usr/bin/python3
+"""Module that calculates the perimeter of an island in a grid."""
 
-# Compiler 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic
 
-# Source files 
-SRC = main.c file1.c file2.c
+def num_water_neighbors(grid, k, j):
+    """Returns the number of water neighbors a cell has in a grid."""
 
-# Object files 
-OBJ = $(patsubst %.c, %.o, $(SRC))
+    num = 0
 
-# executable
-NAME = school
+    if k <= 0 or not grid[k - 1][j]:
+        num += 1
+    if j <= 0 or not grid[k][j - 1]:
+        num += 1
+    if j >= len(grid[k]) - 1 or not grid[k][j + 1]:
+        num += 1
+    if k >= len(grid) - 1 or not grid[k + 1][j]:
+        num += 1
 
-# builds your executable
-all: $(NAME)
+    return num
 
-#  build the executable
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $@
+ # return the island 
 
-#  compile individual 
-%.o: %.c m.h
-	$(CC) $(CFLAGS) -c $< -o $@
+def island_perimeter(grid):
+    """Returns the perimeter of the island in grid."""
 
-#  files and the executable
-clean:
-	$(RM) $(NAME) *~ \#*
+    perimeter = 0
+    for k in range(len(grid)):
+        for j in range(len(grid[k])):
+            if grid[k][j]:
+                perimeter += num_water_neighbors(grid, k, j)
 
-# the object files
-oclean:
-	$(RM) $(OBJ)
-
-# the source files
-fclean: clean oclean
-
-# source files
-re: fclean all
-
-# conflicts with files of the same names
-.PHONY: all clean oclean fclean re
+return perimeter
